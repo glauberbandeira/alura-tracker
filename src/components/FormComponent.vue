@@ -37,7 +37,8 @@ export default defineComponent({
     name: 'FormComponent',
     data () {
         return {
-            timeSecond: 0
+            timeSecond: 0,
+            stopwatch: 0
         }
     },
     computed: {
@@ -48,14 +49,13 @@ export default defineComponent({
     methods: {
         start() {
             // comecar a contagem do timeSecond / 1 seg = 1000ms
-            setInterval(() => {
+            this.stopwatch = setInterval(() => {
                 this.timeSecond += 1
             }, 1000)
-            console.log('Iniciando')
+            
         },
         finish() {
-            console.log('finalizando')
-
+            clearInterval(this.stopwatch)
         }
     }
 })
